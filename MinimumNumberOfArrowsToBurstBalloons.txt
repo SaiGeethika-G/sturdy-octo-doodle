@@ -1,6 +1,6 @@
 452. Minimum Number of Arrows to Burst Balloons
 
-There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array points where points[i] = [xstart, xend] denotes a balloon whose horizontal diameter stretches between xstart and xend. You do not know the exact y-coordinates of the balloons.
+There are some spherical balloons taped onto a flat wall that represents the XY plane. The balloons are represented as a 2D integer array points where points[i] = [xstart, xend] denotes a balloon whose horizontal diameter stretches between xstart and xend. You do not know the exact y-coordinates of the balloons.
 
 Arrows can be shot up directly vertically (in the positive y-direction) from different points along the x-axis. A balloon with xstart and xend is burst by an arrow shot at x if xstart <= x <= xend. There is no limit to the number of arrows that can be shot. A shot arrow keeps traveling up infinitely, bursting any balloons in its path.
 
@@ -39,7 +39,7 @@ TC: O(NlogN) for sorting
 SC: O(N) for vector
 
 Approach:
-Make comparision between the intervals to know the intersection of two intervals. Arrange the intervals in A.O using custom sort based on first and second values in the interval which makes comparison by one go. Finally maintain a vector to store all the intersetion values in the vector by comparing each interval with cur interval of vector. The intersection interval comes by large,small of compared interval vals. Finally, the size of vector represents the non overlapping intervals which means the arrows required.
+Make a comparison between the intervals to know the intersection of two intervals. Arrange the intervals in A.O using custom sort based on first and second values in the interval which makes comparison by one go. Finally maintain a vector to store all the intersetion values in the vector by comparing each interval with cur interval of vector. The intersection interval comes by large,small of compared interval vals. Finally, the size of vector represents the non overlapping intervals which means the arrows required.
 
 Code(C++):
 
