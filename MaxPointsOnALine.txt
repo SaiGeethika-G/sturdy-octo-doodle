@@ -1,0 +1,51 @@
+149. Max Points on a Line
+
+Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.
+
+Example 1:
+
+Input: points = [[1,1],[2,2],[3,3]]
+Output: 3
+
+Example 2:
+
+Input: points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
+Output: 4
+ 
+
+Constraints:
+
+1 <= points.length <= 300
+points[i].length == 2
+-104 <= xi, yi <= 104
+All the points are unique.
+
+Approach:
+Use slope to find whether a pait of points lie in a line. Maintain a nested for loop to check for slopes of pair of points. For every point, we can find the slope with other points and maintain them as count in dictionary with slope as key. This way we are storing the slopes, that means we are finding diff lines for a point and we can store maximum value of the dictionary as maxpoints+1. Here we are using +1 to include the point from which we are calculating the slope. Maxpoints will be no less than 1 according to constraints. After checking the point we can store the val in result and clear dictionary to check for next points. We start inner loop at i+1 as prev elements, if they are in same line with cur point it is already stored and noted once. We can calculate slope with function to make it more clear.
+
+TC: O(N^2)
+SC: O(N) 
+
+Code(Python):
+
+class Solution:
+    def calcSlope(self,x1,y1,x2,y2):
+        if(x1==x2):
+            return float("inf")
+        else:
+            return (y2-y1)/(x2-x1)
+    def maxPoints(self, points: List[List[int]]) -> int:
+        result=1
+        for i in range(len(points)):
+            x1,y1=points[i]
+            maxpoints=1
+            d={}
+            for j in range(i+1,len(points)):
+                x2,y2=points[j]
+                m=self.calcSlope(x1,y1,x2,y2)
+                d[m]=d.get(m,0)+1
+                maxpoints=max(maxpoints,d[m]+1)
+            result=max(result,maxpoints)
+        return result
+        
+
