@@ -65,5 +65,48 @@ public:
     }
 };
 
+---------------------------------------------------------------------------------------------------------
+
+Approach 2:
+Iterative solution - Use stack
+Stack is LIFO, so we need to insert right child before left child to get left after right.
+Push root and do iterations until stack is not empty. Take cur node from stack and pop it off as it will be visited. If the cur node is not null, we can add the val to ans vector and push right-left nodes.
+
+Stack operations are O(1)
+TC: O(N)
+SC: O(N)
+
+Code(C++):
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode*> s;
+        s.push(root);
+        while(!s.empty()){
+            TreeNode* cur=s.top();
+            s.pop();  // Removing the visited node;
+            if(cur!=NULL){
+                ans.push_back(cur->val);
+                s.push(cur->right);  //Stack LIFO so right child then left child
+                s.push(cur->left);
+            }
+        }
+        return ans;
+    }
+};
+
 
 
