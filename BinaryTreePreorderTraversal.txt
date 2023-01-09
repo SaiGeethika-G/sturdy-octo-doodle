@@ -26,7 +26,7 @@ Approach:
 Parent -- left -- right  => Preorder
 Use a vector by reference.
 TC: O(N)
-SC: O(N) -- To store result vector
+SC: O(N) -- Recursion stack
 
 Code(C++) -(1) :
 Pass by reference and function
