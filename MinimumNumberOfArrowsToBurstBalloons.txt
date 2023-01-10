@@ -72,7 +72,8 @@ public:
     }
 };
 
----------------------------------------------------------------------------------------------------------Optimized Approach:
+---------------------------------------------------------------------------------------------------------
+Optimized Approach:
 Reduce space complexity. As we are using v to track only the last i.e, cur interval, we can track only the by store in a pair and use that. instead of size of v, here we can use counter to increment when there is an update in cur.
 
 Code(C++):
